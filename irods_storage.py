@@ -12,7 +12,7 @@ class IrodsStorage(Storage):
             option = settings.CUSTOM_STORAGE_OPTIONS
 
     def _open(name, mode='rb'):
-        self.session.runCmd( "iget", [ name ] )
+        self.session.runCmd( "iget", [ name, "tempfile." + name] )
         return open(name)
 
     def _save(name, content):
